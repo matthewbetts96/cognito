@@ -1,5 +1,15 @@
+import styled from "styled-components";
+
 export const Header = () => {
-  return <div>HeaDER</div>;
+  return <Wrapper>HeaDER</Wrapper>;
 };
+
+const Wrapper = styled.div`
+  min-height: 50px;
+  border: 1px solid green;
+  position: fixed;
+  width: 100%;
+  background: red;
+`;
 
 export default Header;

@@ -1,8 +1,18 @@
 import AppRoutes from "routes/AppRoutes";
 import "./App.css";
+import { BasketProvider } from "context/BasketContext";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
-  return <AppRoutes />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <BasketProvider>
+        <AppRoutes />
+      </BasketProvider>
+    </QueryClientProvider>
+  );
 }
 
 export default App;
