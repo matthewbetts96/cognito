@@ -18,6 +18,7 @@ interface BasketContextType {
   basket: BasketItem[];
   clearBasket: () => void;
   modifyBasket: (item: BasketItem) => void;
+  removeItem: (item: BasketItem) => void;
   getTotalCost: () => void;
 }
 
@@ -62,12 +63,20 @@ export const BasketProvider: React.FC<BasketProviderProps> = ({ children }) => {
     }
   };
 
+  const removeItem = (item: BasketItem) => {
+    setBasket(basket.filter((i) => i.id !== item.id));
+  };
+
   const clearBasket = () => {
     setBasket([]);
   };
 
   const getTotalCost = () => {
-    return 0;
+    return basket
+      .reduce((total: number, item: BasketItem) => {
+        return total + item.price * item.quantity;
+      }, 0)
+      .toFixed(2);
   };
 
   return (
@@ -77,6 +86,7 @@ export const BasketProvider: React.FC<BasketProviderProps> = ({ children }) => {
         clearBasket,
         modifyBasket,
         getTotalCost,
+        removeItem,
       }}
     >
       {children}

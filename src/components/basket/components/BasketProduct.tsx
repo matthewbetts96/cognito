@@ -1,5 +1,5 @@
 import { IconButton, List, ListItem, ListItemText } from "@mui/material";
-import { BasketItem } from "context/BasketContext";
+import { BasketItem, useBasket } from "context/BasketContext";
 import DeleteIcon from "@mui/icons-material/Delete";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 
@@ -8,15 +8,31 @@ interface BasketProductProps {
 }
 
 const BasketProduct = ({ product }: BasketProductProps) => {
+  const { modifyBasket, removeItem } = useBasket();
+
   return (
     <List dense={false}>
       <ListItem
         secondaryAction={
           <>
-            <IconButton edge="end" aria-label="delete">
+            <IconButton
+              edge="end"
+              aria-label="delete-one"
+              onClick={() =>
+                modifyBasket({
+                  ...product,
+                  quantity: -1,
+                })
+              }
+            >
               <RemoveCircleIcon />
             </IconButton>
-            <IconButton edge="end" aria-label="delete">
+
+            <IconButton
+              edge="end"
+              aria-label="delete-all"
+              onClick={() => removeItem(product)}
+            >
               <DeleteIcon />
             </IconButton>
           </>

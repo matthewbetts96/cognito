@@ -1,19 +1,27 @@
-import { Button, InputLabel, TextField } from "@mui/material";
+import { Button, InputLabel, Link, TextField } from "@mui/material";
 import styled from "styled-components";
 import image from "assets/duffBeer.png";
 import { useState } from "react";
-import { useBasket } from "context/BasketContext";
+import { BasketItem, useBasket } from "context/BasketContext";
 
-const ProductTile = ({ product }: any) => {
+interface ProductTileProps {
+  product: BasketItem;
+}
+
+const ProductTile = ({ product }: ProductTileProps) => {
   const { modifyBasket } = useBasket();
   const [quantity, setQuantity] = useState<number>(1);
   return (
     <Product>
-      <Image alt={"duffBeer"} src={image}></Image>
-      <Name>{product.name}</Name>
+      <Link href="#" underline="hover">
+        <Image alt={"duffBeer"} src={image}></Image>
+        <Name>{product.name}</Name>
+      </Link>
 
       <div>
-        <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
+        <InputLabel htmlFor="standard-adornment-amount">
+          £{product.price}
+        </InputLabel>
         <TextField
           type="number"
           value={quantity}
@@ -34,6 +42,7 @@ const ProductTile = ({ product }: any) => {
 const StyledButton = styled(Button)`
   width: 100%;
   margin-top: 5px !important;
+  margin-bottom: 5px !important;
 `;
 
 const Name = styled.div`
