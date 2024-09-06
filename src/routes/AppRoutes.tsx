@@ -1,3 +1,4 @@
+import Basket from "components/basket/Basket";
 import Shell from "components/shell/Shell";
 import Landing from "pages/landing/Landing";
 import ProductDetailPage from "pages/productDetail/ProductDetailPage";
@@ -10,6 +11,7 @@ export const AppRoutes = () => {
       <Route path="/" element={<Shell />}>
         <Route index element={<Landing />} />
         <Route path="/product/:id" element={<ProductDetailPage />} />
+        <Route path="/basket" element={<Basket />} />
         <Route path="*" element={<div>Page Unknown</div>} />
       </Route>
     </Routes>

@@ -37,8 +37,8 @@ const NoContentContainer = styled.span`
 `;
 
 const Image = styled.img`
-  height: 75%;
-  width: 75%;
+  height: 60%;
+  width: 60%;
 `;
 
 const BasketProductsWrapper = styled.div`

@@ -1,4 +1,4 @@
-import { Button, CircularProgress } from "@mui/material";
+import { Button } from "@mui/material";
 import { useProductQuery } from "hooks/useProductQuery";
 import { Link } from "react-router-dom";
 import image from "assets/duffBeer.png";
