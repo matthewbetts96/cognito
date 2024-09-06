@@ -19,6 +19,7 @@ const Wrapper = styled.div`
   width: 100%;
   background: red;
   z-index: 10;
+  align-content: center;
 `;
 
 export default Header;

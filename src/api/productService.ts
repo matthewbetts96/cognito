@@ -8,9 +8,11 @@ export const fetchProducts: () => Promise<BasketItem[]> = async () => {
 
 /**
  * Ideally there would be a separate endpoing that'd accept an ID and just return that data
- * but this is a workaround that simulates that behaviour (TODO)
+ * but this is a workaround that simulates that behaviour
  */
-export const fetchProductById = async (id: number) => {
+export const fetchProductById: (id: number) => Promise<BasketItem> = async (
+  id: number
+) => {
   const response = await apiClient.get(`/products.json`);
-  return response.data;
+  return response.data.filter((i: BasketItem) => i.id === id)[0];
 };
