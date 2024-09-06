@@ -1,28 +1,17 @@
-import { useBasket } from "context/BasketContext";
 import styled from "styled-components";
-import BasketProduct from "./components/BasketProduct";
-import BasketFooter from "./components/BasketFooter";
+import BasketFooter from "./components/BasketFooter/BasketFooter";
+import BasketItems from "./components/BasketItems/BasketItems";
+import BasketHeader from "./components/BasketHeader/BasketHeader";
 
 export const Basket = () => {
-  const { basket } = useBasket();
-
   return (
     <BasketWrapper>
-      Basket
-      <BasketProductsWrapper>
-        {basket.map((i) => {
-          return <BasketProduct product={i} />;
-        })}
-      </BasketProductsWrapper>
+      <BasketHeader />
+      <BasketItems />
       <BasketFooter />
     </BasketWrapper>
   );
 };
-
-const BasketProductsWrapper = styled.div`
-  height: 75%;
-  overflow: auto;
-`;
 
 const BasketWrapper = styled.div`
   display: flex;
