@@ -7,7 +7,7 @@ import React, {
 } from "react";
 
 export interface BasketItem {
-  id: string;
+  id: number;
   name: string;
   price: number;
   quantity: number;
@@ -16,9 +16,9 @@ export interface BasketItem {
 
 interface BasketContextType {
   basket: BasketItem[];
-  addToBasket: (item: BasketItem) => void;
-  removeFromBasket: (itemId: string) => void;
   clearBasket: () => void;
+  modifyBasket: (item: BasketItem) => void;
+  getTotalCost: () => void;
 }
 
 const BasketContext = createContext<BasketContextType | undefined>(undefined);
@@ -39,21 +39,45 @@ export const BasketProvider: React.FC<BasketProviderProps> = ({ children }) => {
     localStorage.setItem("basket", JSON.stringify(basket));
   }, [basket]);
 
-  const addToBasket = (item: BasketItem) => {
-    setBasket((prev) => [...prev, item]);
-  };
+  const modifyBasket = (item: BasketItem) => {
+    const oldProduct = basket.find((i) => i.id === item.id);
 
-  const removeFromBasket = (itemId: string) => {
-    setBasket((prev) => prev.filter((item) => item.id !== itemId));
+    // If the item already exists within the basket, we need to modify the amount.
+    // This function can work as both an addition and a subtraction from the basket
+    // by just passing a positive or a negative number and then clearing the item if
+    // it's count is 0
+    if (oldProduct) {
+      const newProduct = {
+        ...oldProduct,
+        quantity: oldProduct.quantity + item.quantity,
+      };
+      setBasket((prev) =>
+        [...prev.filter((i) => i.id !== newProduct.id), newProduct]
+          .filter((i) => i.quantity !== 0)
+          .sort((a, b) => a.id - b.id)
+      );
+    } else {
+      // if it doesn't exist, just add it as you normally would
+      setBasket((prev) => [...prev, item].sort((a, b) => a.id - b.id));
+    }
   };
 
   const clearBasket = () => {
     setBasket([]);
   };
 
+  const getTotalCost = () => {
+    return 0;
+  };
+
   return (
     <BasketContext.Provider
-      value={{ basket, addToBasket, removeFromBasket, clearBasket }}
+      value={{
+        basket,
+        clearBasket,
+        modifyBasket,
+        getTotalCost,
+      }}
     >
       {children}
     </BasketContext.Provider>

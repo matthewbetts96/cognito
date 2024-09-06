@@ -1,45 +1,28 @@
-import { BasketItem, useBasket } from "context/BasketContext";
+import { BasketItem } from "context/BasketContext";
 import { useProductsQuery } from "hooks/useProductsQuery";
 import styled from "styled-components";
-import image from "assets/duffBeer.png";
+
+import ProductTile from "./components/ProductTile";
 
 export const Landing = () => {
-  const { addToBasket, basket } = useBasket();
   const { data: products, isLoading, error } = useProductsQuery();
 
   return (
-    <Foo>
+    <ProductsContainer>
       {products &&
         products.map((product: BasketItem) => {
-          return (
-            <Product>
-              <Image alt={"duffBeer"} src={image}></Image>
-              {product.name}
-            </Product>
-          );
+          return <ProductTile product={product} />;
         })}
-    </Foo>
+    </ProductsContainer>
   );
 };
 
-const Image = styled.img`
-  height: 100px;
-  width: 100px;
-`;
-
-const Foo = styled.div`
+const ProductsContainer = styled.div`
   display: flex;
   height: 100%;
   overflow: auto;
   flex-flow: wrap;
-`;
-
-const Product = styled.div`
-  width: 100px;
-  justify-content: center;
-  padding: 20px;
-  border: 1px solid red;
-  margin: 1%;
+  place-content: center;
 `;
 
 export default Landing;

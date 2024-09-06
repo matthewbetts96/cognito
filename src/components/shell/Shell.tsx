@@ -41,7 +41,8 @@ const MainContentWrapper = styled.div`
 const ScrollableChild = styled.div`
   width: 40%;
   margin-left: 15%;
-  background-color: lightcoral;
+  border: 1px solid green;
+  border-radius: 15px;
   padding: 10px;
   @media (max-width: 768px) {
     width: 100%;
@@ -53,7 +54,8 @@ const ScrollableChild = styled.div`
 const FixedChild = styled.div`
   position: fixed;
   width: 20%;
-  background-color: lightblue;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
   height: 100vh;
   top: 50px;
   right: calc(50% - 32.5%);
