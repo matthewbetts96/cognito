@@ -10,7 +10,7 @@ export const AppRoutes = () => {
       <Route path="/" element={<Shell />}>
         <Route index element={<Landing />} />
         <Route path="product" element={<Product />} />
-        <Route path="*" element={<div>unknown</div>} />
+        <Route path="*" element={<div>Page Unknown</div>} />
       </Route>
     </Routes>
   );

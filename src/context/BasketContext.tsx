@@ -6,11 +6,12 @@ import React, {
   ReactNode,
 } from "react";
 
-interface BasketItem {
+export interface BasketItem {
   id: string;
   name: string;
   price: number;
   quantity: number;
+  description: string;
 }
 
 interface BasketContextType {

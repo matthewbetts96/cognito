@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   position: fixed;
   width: 100%;
   background: red;
+  z-index: 10;
 `;
 
 export default Header;

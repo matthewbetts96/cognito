@@ -1,6 +1,7 @@
+import { BasketItem } from "context/BasketContext";
 import apiClient from "./api";
 
-export const fetchProducts = async () => {
+export const fetchProducts: () => Promise<BasketItem[]> = async () => {
   const response = await apiClient.get("/products.json");
   return response.data;
 };

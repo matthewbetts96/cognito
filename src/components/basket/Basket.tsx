@@ -14,13 +14,14 @@ export const Basket = () => {
   return (
     <Foo>
       <button
-        onClick={() =>
-          addToBasket({
-            id: Math.random().toFixed(),
-            name: "string",
-            price: 1,
-            quantity: 1,
-          })
+        onClick={
+          () => {}
+          // addToBasket({
+          //   id: Math.random().toFixed(),
+          //   name: "string",
+          //   price: 1,
+          //   quantity: 1,
+          // })
         }
       >
         dlcuk
@@ -29,10 +30,6 @@ export const Basket = () => {
   );
 };
 
-const Foo = styled.div`
-  width: 20%;
-  border: 1px solid red;
-  margin: 1%;
-`;
+const Foo = styled.div``;
 
 export default Basket;
