@@ -1,5 +1,4 @@
 import AppRoutes from "routes/AppRoutes";
-import "./App.css";
 import { BasketProvider } from "context/BasketContext";
 import { QueryClient, QueryClientProvider } from "react-query";
 

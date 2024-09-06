@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import image from "assets/kiwk-e-mart.png";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
     <Wrapper>
-      <img alt={"kwik-e-mart-logo"} src={image} />
+      <Link to={`/`}>
+        <img alt={"kwik-e-mart-logo"} src={image} />
+      </Link>
     </Wrapper>
   );
 };

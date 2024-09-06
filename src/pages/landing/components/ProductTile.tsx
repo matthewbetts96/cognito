@@ -1,8 +1,10 @@
-import { Button, InputLabel, Link, TextField } from "@mui/material";
+import { Button, InputLabel, TextField } from "@mui/material";
 import styled from "styled-components";
 import image from "assets/duffBeer.png";
 import { useState } from "react";
 import { BasketItem, useBasket } from "context/BasketContext";
+
+import { Link } from "react-router-dom";
 
 interface ProductTileProps {
   product: BasketItem;
@@ -13,7 +15,7 @@ const ProductTile = ({ product }: ProductTileProps) => {
   const [quantity, setQuantity] = useState<number>(1);
   return (
     <Product>
-      <Link href="#" underline="hover">
+      <Link to={`product/${product.id}`}>
         <Image alt={"duffBeer"} src={image}></Image>
         <Name>{product.name}</Name>
       </Link>
