@@ -10,6 +10,7 @@ const BasketHeader = () => {
 };
 
 const Container = styled.div`
+  padding-top: 10px;
   display: flex;
   justify-content: center;
 `;

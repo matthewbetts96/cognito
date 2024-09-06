@@ -54,9 +54,10 @@ const ScrollableChild = styled.div`
 const FixedChild = styled.div`
   position: fixed;
   width: 20%;
+  padding-top: 10px;
   border-left: 1px solid black;
   border-right: 1px solid black;
-  height: 100vh;
+  height: calc(100vh - 60px);
   top: 50px;
   right: calc(50% - 32.5%);
 

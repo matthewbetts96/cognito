@@ -1,11 +1,16 @@
 import styled from "styled-components";
+import image from "assets/kiwk-e-mart.png";
 
 export const Header = () => {
-  return <Wrapper>HeaDER</Wrapper>;
+  return (
+    <Wrapper>
+      <img alt={"kwik-e-mart-logo"} src={image} />
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.div`
-  min-height: 50px;
+  height: 60px;
   border: 1px solid green;
   position: fixed;
   width: 100%;
