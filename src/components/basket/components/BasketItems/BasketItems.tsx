@@ -13,10 +13,10 @@ const BasketItems = () => {
         {!!basket.length ? (
           basket.map((i) => {
             return (
-              <>
+              <span key={i.id}>
                 <BasketProduct product={i} />
                 <Divider />
-              </>
+              </span>
             );
           })
         ) : (

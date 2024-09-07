@@ -8,6 +8,12 @@ interface ErrorAndLoadingHandlerProps {
   refetch: any;
 }
 
+/**
+ * A simple HOC that can be wrapped around any component that is making a request (doesn't have
+ * to be the product query) supports loading and error state as well as giving the option for
+ * retrying any failed requests
+ */
+
 const ErrorAndLoadingHandler = ({
   isLoading,
   error,

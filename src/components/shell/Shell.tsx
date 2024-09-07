@@ -1,7 +1,7 @@
+import styled from "styled-components";
+import { Outlet, useLocation } from "react-router-dom";
 import Basket from "components/basket/Basket";
 import Header from "components/header/Header";
-import { Outlet, useLocation } from "react-router-dom";
-import styled from "styled-components";
 
 interface PathProps {
   isLocationBasket: boolean;
@@ -17,7 +17,6 @@ export const Shell = () => {
       <Header />
       <MainContentWrapper isLocationBasket={isLocationBasket}>
         <ScrollableChild isLocationBasket={isLocationBasket}>
-          {/* Content is rendered here in this Outlet component based on the route that the user is currently on*/}
           <Outlet />
         </ScrollableChild>
 
@@ -35,7 +34,10 @@ const ContentWrapper = styled.div`
   justify-content: center;
 `;
 
-const MainContentWrapper = styled.div<PathProps>`
+// Using `shouldForwardProp` to prevent forwarding `isLocationBasket`
+const MainContentWrapper = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== "isLocationBasket",
+})<PathProps>`
   padding-top: 100px;
   display: flex;
   align-items: flex-start;
@@ -45,7 +47,9 @@ const MainContentWrapper = styled.div<PathProps>`
   ${(props) => props.isLocationBasket && "justify-content: center"};
 `;
 
-const ScrollableChild = styled.div<PathProps>`
+const ScrollableChild = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== "isLocationBasket",
+})<PathProps>`
   width: 40%;
   border: 1px solid green;
   border-radius: 15px;
@@ -59,7 +63,9 @@ const ScrollableChild = styled.div<PathProps>`
   }
 `;
 
-const FixedChild = styled.div<PathProps>`
+const FixedChild = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== "isLocationBasket",
+})<PathProps>`
   position: fixed;
   width: 20%;
   padding-top: 10px;
