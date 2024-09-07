@@ -16,6 +16,10 @@ const ProductTile = ({ product }: ProductTileProps) => {
   return (
     <Product>
       <Link to={`product/${product.id}`}>
+        {/* 
+          Usually we'd get the image of the product from the API, 
+          however I'm just hardcoding it here as it looks better with an image 
+        */}
         <Image alt={"duffBeer"} src={image}></Image>
         <Name>{product.name}</Name>
       </Link>
@@ -27,7 +31,15 @@ const ProductTile = ({ product }: ProductTileProps) => {
         <TextField
           type="number"
           value={quantity}
-          onChange={(i) => setQuantity(parseInt(i.target.value))}
+          onChange={(i) => {
+            // While the number text field does not allow you to enter a negative
+            // MUI's provided up/down arrows do, this is a fix to disallow users
+            // to be able to enter a negative number of products to the basket
+            if (parseInt(i.target.value) >= 0) {
+              setQuantity(parseInt(i.target.value));
+            }
+            setQuantity(0);
+          }}
         />
         <StyledButton
           disabled={!quantity}

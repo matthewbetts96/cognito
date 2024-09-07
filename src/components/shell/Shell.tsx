@@ -14,6 +14,14 @@ interface PathProps {
  * items that could be used across the application
  */
 
+/**
+ * This is also why Shell and header are in the /components/ directory. I use the
+ * pages directory to store the components (and sub components) of the specific pages
+ * the /components/ directory is used for common components that can be used in more than
+ * one area but are not explictally tied to the page. So something like a <Table /> or
+ * <Button /> would belong here, but not <Basket />.
+ */
+
 export const Shell = () => {
   const { pathname } = useLocation();
 

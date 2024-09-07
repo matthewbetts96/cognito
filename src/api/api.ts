@@ -1,8 +1,9 @@
 import axios from "axios";
+import { BASE_TIMEOUT, BASE_URL } from "../constants";
 
 const apiClient = axios.create({
-  baseURL: "https://s3.eu-west-2.amazonaws.com/techassessment.cognitoedu.org/",
-  timeout: 10000,
+  baseURL: BASE_URL,
+  timeout: BASE_TIMEOUT,
   headers: {
     "Content-Type": "application/json",
   },
