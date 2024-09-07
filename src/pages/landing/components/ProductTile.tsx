@@ -34,7 +34,7 @@ const ProductTile = ({ product }: ProductTileProps) => {
           variant="contained"
           onClick={() => modifyBasket({ ...product, quantity })}
         >
-          Add to Cart
+          Add to Basket
         </StyledButton>
       </div>
     </Product>

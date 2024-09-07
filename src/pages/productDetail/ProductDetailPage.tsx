@@ -27,11 +27,7 @@ export const ProductDetailPage = () => {
 
   return (
     <Container>
-      <Button
-        variant="contained"
-        color={"success"}
-        onClick={() => navigate("/")}
-      >
+      <Button variant="contained" onClick={() => navigate("/")}>
         Back to products
       </Button>
       <ErrorAndLoadingHandler

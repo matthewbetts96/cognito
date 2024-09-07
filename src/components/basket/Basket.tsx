@@ -2,10 +2,11 @@ import styled from "styled-components";
 import BasketFooter from "./components/BasketFooter/BasketFooter";
 import BasketItems from "./components/BasketItems/BasketItems";
 import BasketHeader from "./components/BasketHeader/BasketHeader";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
 export const Basket = () => {
+  const navigate = useNavigate();
   const { pathname } = useLocation();
 
   const isLocationBasket = pathname === "/basket";
@@ -13,8 +14,8 @@ export const Basket = () => {
   return (
     <>
       {isLocationBasket && (
-        <Button variant="outlined">
-          <Link to={"/"}>Back to products</Link>
+        <Button variant="contained" onClick={() => navigate("/")}>
+          Back to products
         </Button>
       )}
       <BasketWrapper>

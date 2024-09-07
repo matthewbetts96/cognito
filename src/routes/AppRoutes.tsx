@@ -1,6 +1,6 @@
 import Basket from "components/basket/Basket";
 import Shell from "components/shell/Shell";
-import Landing from "pages/landing/Landing";
+import LandingPage from "pages/landing/LandingPage";
 import ProductDetailPage from "pages/productDetail/ProductDetailPage";
 import { Route, Routes } from "react-router-dom";
 
@@ -9,7 +9,7 @@ export const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Shell />}>
-        <Route index element={<Landing />} />
+        <Route index element={<LandingPage />} />
         <Route path="/product/:id" element={<ProductDetailPage />} />
         <Route path="/basket" element={<Basket />} />
         <Route path="*" element={<div>Page Unknown</div>} />
