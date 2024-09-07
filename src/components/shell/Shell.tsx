@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Outlet, useLocation } from "react-router-dom";
-import Basket from "components/basket/Basket";
 import Header from "components/header/Header";
+import Basket from "pages/basket/components/basket/Basket";
 
 interface PathProps {
   isLocationBasket: boolean;

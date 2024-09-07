@@ -1,4 +1,4 @@
-import Basket from "components/basket/Basket";
+import Basket from "./components/basket/Basket";
 
 export const BasketPage = () => {
   return <Basket />;
