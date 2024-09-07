@@ -7,6 +7,13 @@ interface PathProps {
   isLocationBasket: boolean;
 }
 
+/**
+ * The shell component is present on every page and thus it should contain
+ * any and all common elements that should be present, currently it only
+ * includes the basket sidebar and the header, but is suitable for any other
+ * items that could be used across the application
+ */
+
 export const Shell = () => {
   const { pathname } = useLocation();
 
@@ -17,6 +24,7 @@ export const Shell = () => {
       <Header />
       <MainContentWrapper isLocationBasket={isLocationBasket}>
         <ScrollableChild isLocationBasket={isLocationBasket}>
+          {/* The contents of the current page will be rendered here */}
           <Outlet />
         </ScrollableChild>
 
@@ -34,7 +42,8 @@ const ContentWrapper = styled.div`
   justify-content: center;
 `;
 
-// Using `shouldForwardProp` to prevent forwarding `isLocationBasket`
+// Using `shouldForwardProp` to prevent forwarding `isLocationBasket`to
+// the dom and causing a console error from react
 const MainContentWrapper = styled.div.withConfig({
   shouldForwardProp: (prop) => prop !== "isLocationBasket",
 })<PathProps>`

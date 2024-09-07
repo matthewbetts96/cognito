@@ -2,9 +2,9 @@ import { BasketItem } from "context/BasketContext";
 import { useProductsQuery } from "hooks/useProductsQuery";
 import styled from "styled-components";
 import ProductTile from "./components/ProductTile";
-import ErrorAndLoadingHandler from "components/errorAndLoadingHandler/LoadingHandler";
+import ErrorAndLoadingHandler from "hoc/errorAndLoadingHandler/LoadingHandler";
 
-export const Landing = () => {
+export const LandingPage = () => {
   const { data: products, isLoading, error, refetch } = useProductsQuery();
 
   return (
@@ -16,7 +16,7 @@ export const Landing = () => {
       <ProductsContainer>
         {products &&
           products.map((product: BasketItem) => {
-            return <ProductTile product={product} />;
+            return <ProductTile product={product} key={product.id} />;
           })}
       </ProductsContainer>
     </ErrorAndLoadingHandler>
@@ -31,4 +31,4 @@ const ProductsContainer = styled.div`
   place-content: center;
 `;
 
-export default Landing;
+export default LandingPage;

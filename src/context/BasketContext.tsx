@@ -28,7 +28,14 @@ interface BasketProviderProps {
   children: ReactNode;
 }
 
-export const BasketProvider: React.FC<BasketProviderProps> = ({ children }) => {
+/**
+ * Context API to handle the logic and storing of all the data
+ * when adding/removing items from the basket
+ */
+
+export const BasketProvider: React.FC<BasketProviderProps> = ({
+  children,
+}: BasketProviderProps) => {
   const [basket, setBasket] = useState<BasketItem[]>(() => {
     // Get initial state from localStorage
     const savedBasket = localStorage.getItem("basket");

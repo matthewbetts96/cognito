@@ -1,5 +1,5 @@
-import Basket from "components/basket/Basket";
 import Shell from "components/shell/Shell";
+import BasketPage from "pages/basket/BasketPage";
 import LandingPage from "pages/landing/LandingPage";
 import ProductDetailPage from "pages/productDetail/ProductDetailPage";
 import { Route, Routes } from "react-router-dom";
@@ -10,8 +10,8 @@ export const AppRoutes = () => {
     <Routes>
       <Route path="/" element={<Shell />}>
         <Route index element={<LandingPage />} />
+        <Route path="/basket" element={<BasketPage />} />
         <Route path="/product/:id" element={<ProductDetailPage />} />
-        <Route path="/basket" element={<Basket />} />
         <Route path="*" element={<div>Page Unknown</div>} />
       </Route>
     </Routes>

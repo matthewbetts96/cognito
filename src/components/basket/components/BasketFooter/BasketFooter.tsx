@@ -26,7 +26,9 @@ const BasketFooter = () => {
         <Button
           variant="contained"
           color={"success"}
-          onClick={() => clearBasket()}
+          onClick={() =>
+            alert("This would trigger a navigate() call to the payment page")
+          }
           disabled={basket.length <= 0}
         >
           PAY
