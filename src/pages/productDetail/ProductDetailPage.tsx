@@ -22,7 +22,7 @@ export const ProductDetailPage = () => {
     isLoading,
     error,
     refetch,
-  } = useProductQuery(Number(pathname.match(/[0-9]/i) || 0));
+  } = useProductQuery(Number(pathname.split("/")[2]));
   const navigate = useNavigate();
 
   return (
