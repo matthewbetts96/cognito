@@ -1,9 +1,16 @@
-import { Button, InputLabel, TextField } from "@mui/material";
+import {
+  Button,
+  IconButton,
+  InputLabel,
+  Snackbar,
+  SnackbarCloseReason,
+  TextField,
+} from "@mui/material";
 import styled from "styled-components";
 import image from "assets/duffBeer.png";
 import { useState } from "react";
 import { BasketItem, useBasket } from "context/BasketContext";
-
+import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 
 interface ProductTileProps {
@@ -13,6 +20,23 @@ interface ProductTileProps {
 const ProductTile = ({ product }: ProductTileProps) => {
   const { modifyBasket } = useBasket();
   const [quantity, setQuantity] = useState<number>(1);
+  const [notificationOpen, setNotificationOpen] = useState(false);
+
+  const handleNotificationOpen = () => {
+    setNotificationOpen(true);
+  };
+
+  const handleClose = (
+    _: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setNotificationOpen(false);
+  };
+
   return (
     <Product>
       <Link to={`product/${product.id}`}>
@@ -45,11 +69,32 @@ const ProductTile = ({ product }: ProductTileProps) => {
         <StyledButton
           disabled={!quantity}
           variant="contained"
-          onClick={() => modifyBasket({ ...product, quantity })}
+          onClick={() => {
+            modifyBasket({ ...product, quantity });
+            handleNotificationOpen();
+          }}
         >
           Add to Basket
         </StyledButton>
       </div>
+      <Snackbar
+        open={notificationOpen}
+        autoHideDuration={3000}
+        onClose={handleClose}
+        message="Item added to basket"
+        action={
+          <>
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleClose}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </>
+        }
+      />
     </Product>
   );
 };
