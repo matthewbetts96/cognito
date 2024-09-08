@@ -37,6 +37,7 @@ const ProductTile = ({ product }: ProductTileProps) => {
             // to be able to enter a negative number of products to the basket
             if (parseInt(i.target.value) >= 0) {
               setQuantity(parseInt(i.target.value));
+              return;
             }
             setQuantity(0);
           }}
