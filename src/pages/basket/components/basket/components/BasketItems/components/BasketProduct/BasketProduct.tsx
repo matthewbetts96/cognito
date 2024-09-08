@@ -18,6 +18,7 @@ const BasketProduct = ({ product }: BasketProductProps) => {
             <IconButton
               edge="end"
               aria-label="delete-one"
+              data-testid={`delete-one-${product.id}`}
               onClick={() =>
                 modifyBasket({
                   ...product,
@@ -30,6 +31,7 @@ const BasketProduct = ({ product }: BasketProductProps) => {
 
             <IconButton
               edge="end"
+              data-testid={`delete-all-${product.id}`}
               aria-label="delete-all"
               onClick={() => removeItem(product)}
             >

@@ -3,10 +3,10 @@ import { useProductQuery } from "hooks/useProductQuery";
 
 import image from "assets/duffBeer.png";
 import styled from "styled-components";
-import ErrorAndLoadingHandler from "hoc/errorAndLoadingHandler/LoadingHandler";
 import { useLocation, useNavigate } from "react-router-dom";
 import { BasketItem, useBasket } from "context/BasketContext";
 import { useState } from "react";
+import ErrorAndLoadingHandler from "hoc/errorAndLoadingHandler/ErrorAndLoadingHandler";
 
 /**
  * A page to show the details of each individual product and it's

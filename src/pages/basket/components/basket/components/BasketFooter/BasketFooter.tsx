@@ -1,5 +1,5 @@
 import { Button, List, ListItem, ListItemText } from "@mui/material";
-import { useBasket } from "context/BasketContext";
+import useBasket from "context/BasketContext";
 import styled from "styled-components";
 
 const BasketFooter = () => {

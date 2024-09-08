@@ -22,7 +22,7 @@ const ErrorAndLoadingHandler = ({
 }: ErrorAndLoadingHandlerProps) => {
   if (isLoading) {
     return (
-      <LoadingContainer>
+      <LoadingContainer data-testid={"loading"}>
         <CircularProgress />
       </LoadingContainer>
     );

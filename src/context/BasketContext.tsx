@@ -14,7 +14,7 @@ export interface BasketItem {
   description: string;
 }
 
-interface BasketContextType {
+interface BasketContextProps {
   basket: BasketItem[];
   clearBasket: () => void;
   modifyBasket: (item: BasketItem) => void;
@@ -22,7 +22,9 @@ interface BasketContextType {
   getTotalCost: () => void;
 }
 
-const BasketContext = createContext<BasketContextType | undefined>(undefined);
+export const BasketContext = createContext<BasketContextProps | undefined>(
+  undefined
+);
 
 interface BasketProviderProps {
   children: ReactNode;
@@ -33,9 +35,7 @@ interface BasketProviderProps {
  * when adding/removing items from the basket
  */
 
-export const BasketProvider: React.FC<BasketProviderProps> = ({
-  children,
-}: BasketProviderProps) => {
+export const BasketProvider: React.FC<BasketProviderProps> = ({ children }) => {
   const [basket, setBasket] = useState<BasketItem[]>(() => {
     // Get initial state from localStorage
     const savedBasket = localStorage.getItem("basket");
@@ -102,10 +102,12 @@ export const BasketProvider: React.FC<BasketProviderProps> = ({
 };
 
 // Hook to use the basket context
-export const useBasket = (): BasketContextType => {
+export const useBasket = (): BasketContextProps => {
   const context = useContext(BasketContext);
   if (!context) {
     throw new Error("useBasket must be used within a BasketProvider");
   }
   return context;
 };
+
+export default useBasket;

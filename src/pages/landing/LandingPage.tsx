@@ -2,7 +2,7 @@ import { BasketItem } from "context/BasketContext";
 import { useProductsQuery } from "hooks/useProductsQuery";
 import styled from "styled-components";
 import ProductTile from "./components/ProductTile/ProductTile";
-import ErrorAndLoadingHandler from "hoc/errorAndLoadingHandler/LoadingHandler";
+import ErrorAndLoadingHandler from "hoc/errorAndLoadingHandler/ErrorAndLoadingHandler";
 
 export const LandingPage = () => {
   const { data: products, isLoading, error, refetch } = useProductsQuery();

@@ -19,7 +19,7 @@ export const Header = () => {
 
       {pages.map((i) => {
         return (
-          <MenuItem key={i.name} onClick={() => navigate(i.route)}>
+          <MenuItem key={i.route} onClick={() => navigate(i.route)}>
             <Typography sx={{ textAlign: "center" }}>{i.name}</Typography>
           </MenuItem>
         );
