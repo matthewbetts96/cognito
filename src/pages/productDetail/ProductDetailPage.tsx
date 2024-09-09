@@ -10,7 +10,9 @@ import ErrorAndLoadingHandler from "hoc/errorAndLoadingHandler/ErrorAndLoadingHa
 
 /**
  * A page to show the details of each individual product and it's
- * description, with the ability to add that product to the basket
+ * description, with the ability to add that product to the basket.
+ *
+ * Designed to use the url to determine what product to show.
  */
 
 export const ProductDetailPage = () => {

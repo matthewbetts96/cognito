@@ -52,8 +52,8 @@ export const BasketProvider: React.FC<BasketProviderProps> = ({ children }) => {
 
     // If the item already exists within the basket, we need to modify the amount.
     // This function can work as both an addition and a subtraction from the basket
-    // by just passing a positive or a negative number and then clearing the item if
-    // it's count is 0
+    // by just passing a positive or a negative number in the quantity field and then
+    // clearing the item from the list if it's count is 0
     if (oldProduct) {
       const newProduct = {
         ...oldProduct,

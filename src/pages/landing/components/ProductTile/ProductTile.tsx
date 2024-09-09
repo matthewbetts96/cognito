@@ -81,7 +81,7 @@ const ProductTile = ({ product }: ProductTileProps) => {
         open={notificationOpen}
         autoHideDuration={3000}
         onClose={handleClose}
-        message="Item added to basket"
+        message={`${product.name} added to basket`}
         action={
           <>
             <IconButton

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Outlet, useLocation } from "react-router-dom";
 import Header from "components/header/Header";
 import Basket from "pages/basket/components/basket/Basket";
+import { MOBILE_SIZE_BREAKPOINT } from "../../constants";
 
 interface PathProps {
   isLocationBasket: boolean;
@@ -73,7 +74,7 @@ const ScrollableChild = styled.div.withConfig({
   padding: 10px;
   ${(props) => !props.isLocationBasket && "margin-left: 15%"};
 
-  @media (max-width: 768px) {
+  @media (max-width: ${MOBILE_SIZE_BREAKPOINT}px) {
     width: 100%;
     margin-right: 5%;
     margin-left: 5%;
@@ -93,7 +94,7 @@ const FixedChild = styled.div.withConfig({
   right: calc(50% - 32.5%);
   ${(props) => props.isLocationBasket && "display: none"};
 
-  @media (max-width: 768px) {
+  @media (max-width: ${MOBILE_SIZE_BREAKPOINT}px) {
     display: none;
   }
 `;
